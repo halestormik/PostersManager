@@ -59,7 +59,7 @@ public class PosterManagerTest {
     }
 
     @Test
-    public void shouldDisplayreversedIfCountBelowDefault(){ // вывод афиши в обратном порядке, если запрошено фильмов меньше, чем добавлено
+    public void shouldDisplayreversedIfCountBelowDefault() { // вывод афиши в обратном порядке, если запрошено фильмов меньше, чем добавлено
         PosterManager manager = new PosterManager(3);
 
         manager.add("Movie 1");
@@ -75,7 +75,7 @@ public class PosterManagerTest {
     }
 
     @Test
-    public void shouldDisplayreversedIfCountAboveDefault(){ // вывод афиши в обратном порядке, если запрошено фильмов больше, чем добавлено
+    public void shouldDisplayreversedIfCountAboveDefault() { // вывод афиши в обратном порядке, если запрошено фильмов больше, чем добавлено
         PosterManager manager = new PosterManager(8);
 
         manager.add("Movie 1");
