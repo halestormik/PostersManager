@@ -29,12 +29,10 @@ public class PosterManagerTest {
     public void shouldDisplayMoviesIf6Added() { // показать афишу с добавленными последовательно шестью фильмами
         PosterManager manager = new PosterManager();
 
-        manager.add("Movie 1");
-        manager.add("Movie 2");
-        manager.add("Movie 3");
-        manager.add("Movie 4");
-        manager.add("Movie 5");
-        manager.add("Movie 6");
+        for (int i = 1; i <= 6; i++) { // добавим 6 фильмов
+            String iToString = String.valueOf(i); // перевод счетчика цикла в строку, чтобы добавить в название фильма
+            manager.add("Movie " + iToString);
+        }
 
         String[] expected = {"Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5", "Movie 6",};
         String[] actual = manager.findAll();
@@ -46,13 +44,22 @@ public class PosterManagerTest {
     public void shouldReverse() { // вывести афишу в обратном порядке, если количество фильмов равно 5 (по умолчанию)
         PosterManager manager = new PosterManager();
 
-        manager.add("Movie 1");
-        manager.add("Movie 2");
-        manager.add("Movie 3");
-        manager.add("Movie 4");
-        manager.add("Movie 5");
+        for (int i = 1; i <= 5; i++) { // добавим 5 фильмов
+            String iToString = String.valueOf(i); // перевод счетчика цикла в строку,  чтобы добавить в название фильма
+            manager.add("Movie " + iToString);
+        }
 
         String[] expected = {"Movie 5", "Movie 4", "Movie 3", "Movie 2", "Movie 1"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldDisplayReversedIfZeroMovies() { // проверка работы метода обратного вывода, если фильмов в афише нет
+        PosterManager manager = new PosterManager(0);
+
+        String[] expected = {};
         String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -62,11 +69,10 @@ public class PosterManagerTest {
     public void shouldDisplayreversedIfCountBelowDefault() { // вывод афиши в обратном порядке, если запрошено фильмов меньше, чем добавлено
         PosterManager manager = new PosterManager(3);
 
-        manager.add("Movie 1");
-        manager.add("Movie 2");
-        manager.add("Movie 3");
-        manager.add("Movie 4");
-        manager.add("Movie 5");
+        for (int i = 1; i <= 5; i++) { // добавим 5 фильмов
+            String iToString = String.valueOf(i); // перевод счетчика цикла в строку,  чтобы добавить в название фильма
+            manager.add("Movie " + iToString);
+        }
 
         String[] expected = {"Movie 5", "Movie 4", "Movie 3"};
         String[] actual = manager.findLast();
@@ -78,11 +84,10 @@ public class PosterManagerTest {
     public void shouldDisplayreversedIfCountAboveDefault() { // вывод афиши в обратном порядке, если запрошено фильмов больше, чем добавлено
         PosterManager manager = new PosterManager(8);
 
-        manager.add("Movie 1");
-        manager.add("Movie 2");
-        manager.add("Movie 3");
-        manager.add("Movie 4");
-        manager.add("Movie 5");
+        for (int i = 1; i <= 5; i++) { // добавим 5 фильмов
+            String iToString = String.valueOf(i); // перевод счетчика цикла в строку,  чтобы добавить в название фильма
+            manager.add("Movie " + iToString);
+        }
 
         String[] expected = {"Movie 5", "Movie 4", "Movie 3", "Movie 2", "Movie 1"};
         String[] actual = manager.findLast();
